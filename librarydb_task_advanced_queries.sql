@@ -237,11 +237,11 @@ FROM issued_status AS ist
 JOIN
 employees AS emp
 ON emp.emp_id = ist.issued_emp_id
--- joining branch and above table
+-- joining branch table with above table
 JOIN
 branch AS br
 ON emp.branch_id = br.branch_id
--- left joining return status
+-- left join with return status
 LEFT JOIN 
 return_status AS rst
 ON rst.issued_id = ist.issued_id
@@ -264,7 +264,7 @@ AS
 SELECT * FROM members
 WHERE member_id IN 
 (SELECT 
-	issued_member_id
+	DISTINCT issued_member_id
 FROM issued_status
 WHERE 
 issued_date >= CURRENT_DATE - INTERVAL '2 month'
@@ -283,7 +283,7 @@ of books processed, and their branch.
 SELECT 
 	emp.branch_id,
 	emp.emp_name,
-	COUNT(ist.issued_id)
+	COUNT(ist.issued_id) AS no_book_issued
 FROM issued_status AS ist
 JOIN
 employees AS emp
@@ -293,6 +293,20 @@ GROUP BY 1,2;
 SELECT * FROM issued_status;
 SELECT * FROM employees;
 
+-- another way
+
+SELECT 
+    e.emp_name,
+    b.*,
+    COUNT(ist.issued_id) as no_book_issued
+FROM issued_status as ist
+JOIN
+employees as e
+ON e.emp_id = ist.issued_emp_id
+JOIN
+branch as b
+ON e.branch_id = b.branch_id
+GROUP BY 1, 2;
 
 /*
 Task 18: Identify Members Issuing High-Risk Books
@@ -305,6 +319,21 @@ and the number of times they've issued damaged books.
 SELECT * FROM issued_status;
 SELECT * FROM members;
 SELECT * FROM return_status;
+
+
+SELECT
+	mem.member_name,
+	ist.issued_book_name,
+	COUNT(ist.issued_id) AS no_book_issued
+FROM issued_status AS ist
+JOIN
+return_status AS rst
+ON ist.issued_id = rst.issued_id
+LEFT JOIN
+members AS mem
+ON mem.member_id = ist.issued_member_id
+WHERE rst.book_quality = 'Damaged'
+GROUP BY 1,2;
 
 /*
 Task 19: Stored Procedure Objective: 
@@ -378,13 +407,14 @@ BEGIN
 END;
 $$
 
+
 SELECT *  FROM books
 WHERE isbn = '978-0-19-280551-1';
 
 SELECT * FROM issued_status;
 
-"978-0-7432-7357-1" no
-"978-0-19-280551-1" yes
+-- "978-0-7432-7357-1" no
+-- "978-0-19-280551-1" yes
 
 CALL book_issue_records('IS155', 'C120', '978-0-19-280551-1', 'E101');
 

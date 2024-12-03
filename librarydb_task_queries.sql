@@ -183,6 +183,23 @@ employees as e2
 ON
 b.manager_id = e2.emp_id;
 
+-- another way
+
+SELECT 
+    e1.emp_id,
+    e1.emp_name,
+    e1.position,
+    e1.salary,
+    b.*,
+    e2.emp_name as manager
+FROM employees as e1
+JOIN 
+branch as b
+ON e1.branch_id = b.branch_id    
+JOIN
+employees as e2
+ON e2.emp_id = b.manager_id
+
 -- Create a Table of Books with Rental 
 -- Price Above a Certain Threshold
 
