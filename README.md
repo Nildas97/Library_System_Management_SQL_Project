@@ -8,6 +8,7 @@
 
 This project demonstrates the implementation of a Library Management System using SQL. It includes creating and managing tables, performing CRUD operations, and executing advanced SQL queries. The goal is to showcase skills in database design, manipulation, and querying.
 
+![Library]()
 ## Objectives
 
 1. Set up the Library Management System 
@@ -28,6 +29,7 @@ This project demonstrates the implementation of a Library Management System usin
 **Table Creation**: Created tables for branches, employees, members, books, issued status, and return status. Each table includes relevant columns and relationships.
 
 '''sql
+
 CREATE DATABASE librarydb;
 
 -- Create table "Branch"
@@ -144,7 +146,6 @@ VALUES
 );
 
 SELECT * FROM books;
-
 '''
 
 **Task 2: Update an Existing Member's Address**
