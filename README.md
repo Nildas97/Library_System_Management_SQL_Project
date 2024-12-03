@@ -4,7 +4,7 @@
 
 **Project Title** : Library Management System <br>
 **Level** : Intermediate <br>
-**Database** : 'librarydb' <br>
+**Database** : `librarydb` <br>
  
 This project demonstrates the implementation of a Library Management System using SQL. It includes creating and managing tables, performing CRUD operations, and executing advanced SQL queries. The goal is to showcase skills in database design, manipulation, and querying.
 
@@ -25,7 +25,7 @@ This project demonstrates the implementation of a Library Management System usin
 ![Library_db ERD](https://github.com/Nildas97/Library_System_Management_SQL_Project/blob/8e997bc31a27f8201d49f6074e980e2d9b5616d5/librarydb_erd.png)
 
 
-**Database Creation**: Created a database named library_db. <br>
+**Database Creation**: Created a database named `library_db`. <br>
 **Table Creation**: Created tables for branches, employees, members, books, issued status, and return status. Each table includes relevant columns and relationships. <br>
 
 ```sql
@@ -699,9 +699,9 @@ This project demonstrates the application of SQL skills in creating and managing
 git clone https://github.com/Nildas97/Library_System_Management_SQL_Project.git
 ```
 
-**Set Up the Database**: Execute the SQL scripts in the 'librarydb.sql' file to create and populate the database.  <br>
+**Set Up the Database**: Execute the SQL scripts in the `librarydb.sql` file to create and populate the database.  <br>
 
-**Run the Queries**: Use the SQL queries in the 'librarydb_insert_queries.sql' & 'librarydb_insert_queries2.sql' file to perform the analysis.  <br>
+**Run the Queries**: Use the SQL queries in the `librarydb_insert_queries.sql` & `librarydb_insert_queries2.sql` file to perform the analysis.  <br>
 
 **Explore and Modify**: Customize the queries as needed to explore different aspects of the data or answer additional questions.  <br>
 
