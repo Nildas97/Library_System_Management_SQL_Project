@@ -164,14 +164,14 @@ SELECT * FROM members;
 **Task 3: Delete a Record from the Issued Status Table** 
 -- Objective: Delete the record with issued_id = 'IS121' from the issued_status table.
 
-'''sql
+```sql
 
 DELETE FROM issued_status
 WHERE issued_id = 'IS106';
 
 SELECT * FROM issued_status;
 
-'''
+```
 
 **Task 4: Retrieve All Books Issued by a Specific Employee** 
 -- Objective: Select all books issued by the employee with emp_id = 'E101'.
